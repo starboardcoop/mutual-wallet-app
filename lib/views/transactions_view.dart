@@ -15,10 +15,7 @@ class TransactionsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Transaction> transactions = <Transaction>[
-      Transaction(_address, "John Smith", 70),
-      Transaction("Jane Smith", _address, 25)
-    ];
+    List<Transaction> transactions = Transaction.all().toList();
 
     return Scaffold(
       body: ListView.builder(

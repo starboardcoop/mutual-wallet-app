@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mutual_wallet/view_controller.dart';
-import 'package:mutual_wallet/views/exchange_view.dart';
 
 void main() {
   runApp(const MyApp());

@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:mutual_wallet/view_controller.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const MutualCreditApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class MutualCreditApp extends StatelessWidget {
+  const MutualCreditApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

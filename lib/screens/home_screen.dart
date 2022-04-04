@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:mutual_wallet/models/transaction.dart';
+import 'package:mutual_wallet/widgets/exchange_button.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -50,13 +51,7 @@ class HomeScreen extends StatelessWidget {
         },
         padding: const EdgeInsets.all(16),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: const Icon(
-          Icons.swap_horiz,
-          size: 32,
-        ),
-      ),
+      floatingActionButton: ExchangeButton(onPressed: () {}),
     );
   }
 }

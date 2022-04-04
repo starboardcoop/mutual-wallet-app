@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:mutual_wallet/views/transactions_view.dart';
+import 'package:mutual_wallet/screens/home_screen.dart';
 
 class ViewController extends StatefulWidget {
   const ViewController({Key? key}) : super(key: key);
@@ -51,7 +51,7 @@ class _ViewControllerState extends State<ViewController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _getAppBar(),
-      body: const TransactionsView(),
+      body: const HomeScreen(),
     );
   }
 }

@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:mutual_wallet/models/transaction.dart';
 
-class BankView extends StatelessWidget {
-  const BankView({Key? key}) : super(key: key);
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({Key? key}) : super(key: key);
 
-  final String _address = "bank";
+  final String _address = "1234";
 
   TextStyle _textStyle() {
     return const TextStyle(
@@ -15,34 +15,30 @@ class BankView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Transaction> transfers = <Transaction>[
-      Transaction(_address, "Me", 250),
-      Transaction(_address, "John Smith", 250),
-      Transaction(_address, "Jane Smith", 250),
-    ];
+    List<Transaction> transactions = Transaction.all().toList();
 
     return Scaffold(
       body: ListView.builder(
-        itemCount: transfers.length,
+        itemCount: transactions.length,
         itemBuilder: (_, i) {
           return Card(
             child: Container(
               child: Row(
                 children: [
-                  transfers[i].sender == _address
+                  transactions[i].sender == _address
                       ? const Icon(Icons.north_east, color: Colors.orange)
                       : const Icon(Icons.south_west, color: Colors.white),
                   const Spacer(flex: 1),
                   Text(
-                    transfers[i].sender == _address
-                        ? transfers[i].recipient
-                        : transfers[i].sender,
+                    transactions[i].sender == _address
+                        ? transactions[i].recipient
+                        : transactions[i].sender,
                     style: _textStyle(),
                   ),
                   const Spacer(flex: 10),
                   Text(
                     NumberFormat.currency(symbol: "\$ ")
-                        .format(transfers[i].amount),
+                        .format(transactions[i].amount),
                     style: _textStyle(),
                   ),
                 ],
@@ -53,6 +49,13 @@ class BankView extends StatelessWidget {
           );
         },
         padding: const EdgeInsets.all(16),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: const Icon(
+          Icons.swap_horiz,
+          size: 32,
+        ),
       ),
     );
   }

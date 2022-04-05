@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+import 'package:mutual_wallet/models/hours.dart';
 import 'package:mutual_wallet/models/transaction.dart';
 import 'package:mutual_wallet/widgets/exchange_button.dart';
 
@@ -38,8 +38,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                   const Spacer(flex: 10),
                   Text(
-                    NumberFormat.currency(symbol: "\$ ")
-                        .format(transactions[i].amount),
+                    Hours(transactions[i].amount).toString(),
                     style: _textStyle(),
                   ),
                 ],

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:mutual_wallet/view_controller.dart';
+import 'package:mutual_wallet/models/user.dart';
+import 'package:mutual_wallet/screens/home_screen.dart';
+import 'package:mutual_wallet/theme_factory.dart';
+import 'package:mutual_wallet/widgets/main_app_bar.dart';
 
 void main() {
   runApp(const MutualCreditApp());
@@ -10,19 +13,15 @@ class MutualCreditApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var user = User("Dillon");
+
     return MaterialApp(
       title: 'Mutual Wallet',
-      theme: ThemeData(
-        brightness: Brightness.dark,
-        primarySwatch: Colors.orange,
-        floatingActionButtonTheme: const FloatingActionButtonThemeData(
-          backgroundColor: Colors.orange,
-        ),
-        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-          selectedItemColor: Colors.orange,
-        ),
+      theme: ThemeFactory.get(),
+      home: Scaffold(
+        appBar: MainAppBar(user),
+        body: const HomeScreen(),
       ),
-      home: const ViewController(),
     );
   }
 }

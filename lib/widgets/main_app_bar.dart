@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mutual_wallet/models/hours.dart';
+import 'package:mutual_wallet/hours_formatter.dart';
 import 'package:mutual_wallet/models/user.dart';
 
 class MainAppBar extends AppBar {
@@ -17,7 +17,7 @@ class MainAppBar extends AppBar {
               ),
               const Spacer(flex: 10),
               Text(
-                Hours(_user.balance).toString(),
+                HoursFormatter.format(_user.balance),
                 style: const TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.w500,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:mutual_wallet/models/user.dart';
 import 'package:mutual_wallet/screens/home_screen.dart';
+import 'package:mutual_wallet/widgets/main_app_bar.dart';
 
 class ViewController extends StatefulWidget {
   const ViewController({Key? key}) : super(key: key);
@@ -11,37 +11,12 @@ class ViewController extends StatefulWidget {
 }
 
 class _ViewControllerState extends State<ViewController> {
-  PreferredSizeWidget _getAppBar() {
-    var user = User("Dillon");
-
-    return AppBar(
-      title: Row(
-        children: [
-          Text(
-            user.name,
-            style: const TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-          const Spacer(flex: 10),
-          Text(
-            NumberFormat.currency(name: "Hours", symbol: "HR ")
-                .format(user.balance),
-            style: const TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
+    var user = User("Dillon");
+
     return Scaffold(
-      appBar: _getAppBar(),
+      appBar: MainAppBar(user),
       body: const HomeScreen(),
     );
   }

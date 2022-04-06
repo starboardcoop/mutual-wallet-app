@@ -23,20 +23,6 @@ class _NewExchangeScreenState extends State<NewExchangeScreen> {
           ),
         ),
       ),
-      floatingActionButton: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          FloatingActionButton(
-            onPressed: () {},
-            child: const Icon(Icons.north_east, color: Colors.orange),
-            backgroundColor: Colors.white,
-          ),
-          FloatingActionButton(
-            onPressed: () {},
-            child: const Icon(Icons.south_west, color: Colors.white),
-          ),
-        ],
-      ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Form(

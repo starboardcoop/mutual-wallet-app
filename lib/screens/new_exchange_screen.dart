@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mutual_wallet/controllers/exchange_controller.dart';
 import 'package:mutual_wallet/controllers/exchange_form_controller.dart';
-import 'package:mutual_wallet/models/user_model.dart';
 import 'package:mutual_wallet/widgets/exchange_form.dart';
-import 'package:provider/provider.dart';
 
 class NewExchangeScreen extends StatefulWidget {
   const NewExchangeScreen({Key? key}) : super(key: key);
@@ -20,17 +18,12 @@ class _NewExchangeScreenState extends State<NewExchangeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    var user = Provider.of<UserModel>(context, listen: false);
-
     return Scaffold(
       appBar: AppBar(
         title: const Text("Exchange"),
-        leading: TextButton(
-          onPressed: () {},
-          child: IconButton(
-            icon: const Icon(Icons.arrow_back_rounded),
-            onPressed: () => Navigator.pop(context),
-          ),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_rounded),
+          onPressed: () => Navigator.pop(context),
         ),
       ),
       body: Padding(
@@ -43,7 +36,7 @@ class _NewExchangeScreenState extends State<NewExchangeScreen> {
         children: [
           FloatingActionButton.extended(
             heroTag: null,
-            onPressed: () => send(user),
+            onPressed: () => send(context),
             label: const Text("SEND"),
             icon: const Icon(Icons.north_east),
             backgroundColor: Colors.white,
@@ -52,7 +45,7 @@ class _NewExchangeScreenState extends State<NewExchangeScreen> {
           const SizedBox(height: 10),
           FloatingActionButton.extended(
             heroTag: null,
-            onPressed: () => request(user),
+            onPressed: () => request(context),
             label: const Text("REQUEST"),
             icon: const Icon(Icons.south_west),
             backgroundColor: Colors.orange,
@@ -63,13 +56,13 @@ class _NewExchangeScreenState extends State<NewExchangeScreen> {
     );
   }
 
-  void send(UserModel user) {
-    _controller.send(user, _formController.exchange);
+  void send(BuildContext context) {
+    _controller.send(context, _formController.send_exchange);
     Navigator.pop(context);
   }
 
-  void request(UserModel user) {
-    _controller.request(user, _formController.exchange);
+  void request(BuildContext context) {
+    _controller.request(context, _formController.request_exchange);
     Navigator.pop(context);
   }
 }

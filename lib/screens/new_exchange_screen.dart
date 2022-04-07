@@ -13,11 +13,12 @@ class NewExchangeScreen extends StatefulWidget {
 }
 
 class _NewExchangeScreenState extends State<NewExchangeScreen> {
-  final _controller = ExchangeController();
   final _formController = ExchangeFormController();
 
   @override
   Widget build(BuildContext context) {
+    final controller = ExchangeController(context);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("Exchange"),
@@ -36,7 +37,7 @@ class _NewExchangeScreenState extends State<NewExchangeScreen> {
         children: [
           FloatingActionButton.extended(
             heroTag: null,
-            onPressed: () => send(context),
+            onPressed: () => send(controller),
             label: const Text("SEND"),
             icon: const Icon(Icons.north_east),
             backgroundColor: Colors.white,
@@ -45,7 +46,7 @@ class _NewExchangeScreenState extends State<NewExchangeScreen> {
           const SizedBox(height: 10),
           FloatingActionButton.extended(
             heroTag: null,
-            onPressed: () => request(context),
+            onPressed: () => request(controller),
             label: const Text("REQUEST"),
             icon: const Icon(Icons.south_west),
             backgroundColor: Colors.orange,
@@ -56,13 +57,13 @@ class _NewExchangeScreenState extends State<NewExchangeScreen> {
     );
   }
 
-  void send(BuildContext context) {
-    _controller.send(context, _formController.send_exchange);
+  void send(ExchangeController controller) {
+    controller.send(context, _formController.send_exchange);
     Navigator.pop(context);
   }
 
-  void request(BuildContext context) {
-    _controller.request(context, _formController.request_exchange);
+  void request(ExchangeController controller) {
+    controller.request(context, _formController.request_exchange);
     Navigator.pop(context);
   }
 }

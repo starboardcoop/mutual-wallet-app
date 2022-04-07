@@ -6,23 +6,28 @@ import 'package:provider/provider.dart';
 import 'exchange.dart';
 
 class ExchangeController {
+  late final BuildContext _context;
+
+  ExchangeController(BuildContext context) {
+    _context = context;
+  }
+
+  UserModel get user => Provider.of<UserModel>(_context, listen: false);
+
+  ExchangeModel get exchangeModel =>
+      Provider.of<ExchangeModel>(_context, listen: false);
+
   void send(BuildContext context, Exchange exchange) {
     print("SEND ${exchange.name} ${exchange.amount} ${exchange.memo}");
 
-    var user = Provider.of<UserModel>(context, listen: false);
     user.debit(exchange.amount);
-
-    var exchangeModel = Provider.of<ExchangeModel>(context, listen: false);
     exchangeModel.add(exchange);
   }
 
   void request(BuildContext context, Exchange exchange) {
     print("REQUEST ${exchange.name} ${exchange.amount} ${exchange.memo}");
 
-    var user = Provider.of<UserModel>(context, listen: false);
     user.credit(exchange.amount);
-
-    var exchangeModel = Provider.of<ExchangeModel>(context, listen: false);
     exchangeModel.add(exchange);
   }
 }

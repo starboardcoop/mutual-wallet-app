@@ -1,29 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:mutual_wallet/view_controller.dart';
-import 'package:mutual_wallet/views/exchange_view.dart';
+import 'package:mutual_wallet/models/exchange_model.dart';
+import 'package:mutual_wallet/screens/home_screen.dart';
+import 'package:mutual_wallet/theme_factory.dart';
+import 'package:mutual_wallet/widgets/wallet_app_bar.dart';
+import 'package:provider/provider.dart';
+
+import 'models/user_model.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(create: (context) => UserModel()),
+      ChangeNotifierProvider(create: (context) => ExchangeModel())
+    ],
+    child: const MutualCreditApp(),
+  ));
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class MutualCreditApp extends StatelessWidget {
+  const MutualCreditApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Mutual Wallet',
-      theme: ThemeData(
-        brightness: Brightness.dark,
-        primarySwatch: Colors.orange,
-        floatingActionButtonTheme: const FloatingActionButtonThemeData(
-          backgroundColor: Colors.orange,
-        ),
-        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-          selectedItemColor: Colors.orange,
-        ),
+      theme: ThemeFactory.get(),
+      home: const Scaffold(
+        appBar: WalletAppBar(),
+        body: HomeScreen(),
       ),
-      home: const ViewController(),
     );
   }
 }

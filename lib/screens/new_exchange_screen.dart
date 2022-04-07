@@ -37,7 +37,7 @@ class _NewExchangeScreenState extends State<NewExchangeScreen> {
         children: [
           FloatingActionButton.extended(
             heroTag: null,
-            onPressed: () => send(controller),
+            onPressed: () => submit(controller),
             label: const Text("SEND"),
             icon: const Icon(Icons.north_east),
             backgroundColor: Colors.white,
@@ -46,7 +46,7 @@ class _NewExchangeScreenState extends State<NewExchangeScreen> {
           const SizedBox(height: 10),
           FloatingActionButton.extended(
             heroTag: null,
-            onPressed: () => request(controller),
+            onPressed: () => submit(controller),
             label: const Text("REQUEST"),
             icon: const Icon(Icons.south_west),
             backgroundColor: Colors.orange,
@@ -57,13 +57,8 @@ class _NewExchangeScreenState extends State<NewExchangeScreen> {
     );
   }
 
-  void send(ExchangeController controller) {
-    controller.send(context, _formController.send_exchange);
-    Navigator.pop(context);
-  }
-
-  void request(ExchangeController controller) {
-    controller.request(context, _formController.request_exchange);
+  void submit(ExchangeController controller) {
+    controller.process(_formController.send_exchange);
     Navigator.pop(context);
   }
 }

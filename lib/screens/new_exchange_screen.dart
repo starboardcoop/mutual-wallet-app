@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:mutual_wallet/controllers/exchange_controller.dart';
 import 'package:mutual_wallet/controllers/exchange_form_controller.dart';
+import 'package:mutual_wallet/models/user_model.dart';
 import 'package:mutual_wallet/widgets/exchange_form.dart';
+import 'package:provider/provider.dart';
 
 class NewExchangeScreen extends StatefulWidget {
   const NewExchangeScreen({Key? key}) : super(key: key);
@@ -18,6 +20,8 @@ class _NewExchangeScreenState extends State<NewExchangeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var user = Provider.of<UserModel>(context, listen: false);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("Exchange"),
@@ -39,7 +43,7 @@ class _NewExchangeScreenState extends State<NewExchangeScreen> {
         children: [
           FloatingActionButton.extended(
             heroTag: null,
-            onPressed: send,
+            onPressed: () => send(user),
             label: const Text("SEND"),
             icon: const Icon(Icons.north_east),
             backgroundColor: Colors.white,
@@ -48,7 +52,7 @@ class _NewExchangeScreenState extends State<NewExchangeScreen> {
           const SizedBox(height: 10),
           FloatingActionButton.extended(
             heroTag: null,
-            onPressed: request,
+            onPressed: () => request(user),
             label: const Text("REQUEST"),
             icon: const Icon(Icons.south_west),
             backgroundColor: Colors.orange,
@@ -59,7 +63,13 @@ class _NewExchangeScreenState extends State<NewExchangeScreen> {
     );
   }
 
-  void send() => _controller.send(_formController.exchange);
+  void send(UserModel user) {
+    _controller.send(user, _formController.exchange);
+    Navigator.pop(context);
+  }
 
-  void request() => _controller.request(_formController.exchange);
+  void request(UserModel user) {
+    _controller.request(user, _formController.exchange);
+    Navigator.pop(context);
+  }
 }

@@ -1,14 +1,16 @@
 import 'package:mutual_wallet/models/exchange.dart';
-import 'package:mutual_wallet/models/user.dart';
+import 'package:mutual_wallet/models/user_model.dart';
 
 class ExchangeController {
-  void send(Exchange exchange) {
+  void send(UserModel user, Exchange exchange) {
     print("SEND ${exchange.person} ${exchange.amount} ${exchange.memo}");
 
-    User.debit(exchange.amount);
+    user.debit(exchange.amount);
   }
 
-  void request(Exchange exchange) {
+  void request(UserModel user, Exchange exchange) {
     print("REQUEST ${exchange.person} ${exchange.amount} ${exchange.memo}");
+
+    user.credit(exchange.amount);
   }
 }

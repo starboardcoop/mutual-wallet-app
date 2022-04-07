@@ -9,11 +9,7 @@ import 'package:provider/provider.dart';
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
-  TextStyle _textStyle() {
-    return const TextStyle(
-      fontSize: 16,
-    );
-  }
+  final _textStyle = const TextStyle(fontSize: 16);
 
   @override
   Widget build(BuildContext context) {
@@ -35,13 +31,13 @@ class HomeScreen extends StatelessWidget {
                         const Spacer(flex: 1),
                         Text(
                           model.exchanges[i].name,
-                          style: _textStyle(),
+                          style: _textStyle,
                         ),
                         const Spacer(flex: 10),
                         Text(
                           HoursFormatter.formatDecimal(
                               model.exchanges[i].amount),
-                          style: _textStyle(),
+                          style: _textStyle,
                         ),
                       ],
                     ),

@@ -43,7 +43,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                     padding: const EdgeInsets.all(12),
                   ),
-                  margin: const EdgeInsets.fromLTRB(0, 0, 0, 16),
+                  margin: const EdgeInsets.fromLTRB(0, 0, 0, 12),
                 );
               },
             );

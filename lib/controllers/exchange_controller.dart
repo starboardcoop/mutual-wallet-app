@@ -19,20 +19,21 @@ class ExchangeController {
       Provider.of<ExchangeModel>(_context, listen: false);
 
   void send(BuildContext context, Exchange exchange) {
-    if (kDebugMode) {
-      print("SEND ${exchange.name} ${exchange.amount} ${exchange.memo}");
-    }
-
+    log(exchange);
     user.debit(exchange.amount);
     exchangeModel.add(exchange);
   }
 
   void request(BuildContext context, Exchange exchange) {
-    if (kDebugMode) {
-      print("REQUEST ${exchange.name} ${exchange.amount} ${exchange.memo}");
-    }
-
+    log(exchange);
     user.credit(exchange.amount);
     exchangeModel.add(exchange);
+  }
+
+  void log(Exchange exchange) {
+    if (kDebugMode) {
+      print(
+          "${exchange.type.name.toUpperCase()} ${exchange.name} ${exchange.amount} ${exchange.memo}");
+    }
   }
 }

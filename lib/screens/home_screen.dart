@@ -39,7 +39,8 @@ class HomeScreen extends StatelessWidget {
                         ),
                         const Spacer(flex: 10),
                         Text(
-                          HoursFormatter.format(model.exchanges[i].amount),
+                          HoursFormatter.formatDecimal(
+                              model.exchanges[i].amount),
                           style: _textStyle(),
                         ),
                       ],

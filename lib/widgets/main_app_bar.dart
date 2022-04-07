@@ -3,13 +3,13 @@ import 'package:mutual_wallet/hours_formatter.dart';
 import 'package:mutual_wallet/models/user.dart';
 
 class MainAppBar extends AppBar {
-  MainAppBar(User _user, {Key? key})
+  MainAppBar({Key? key})
       : super(
           key: key,
           title: Row(
             children: [
               Text(
-                _user.name,
+                User.name,
                 style: const TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.w500,
@@ -17,7 +17,7 @@ class MainAppBar extends AppBar {
               ),
               const Spacer(flex: 10),
               Text(
-                HoursFormatter.format(_user.balance),
+                HoursFormatter.format(User.balance),
                 style: const TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.w500,

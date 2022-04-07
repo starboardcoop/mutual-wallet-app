@@ -1,6 +1,8 @@
 class User {
-  String name;
-  double balance = 205;
+  static String name = "Dillon";
+  static double balance = 205;
 
-  User(this.name);
+  static void debit(double amount) {
+    balance -= amount;
+  }
 }

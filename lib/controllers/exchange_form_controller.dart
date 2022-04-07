@@ -6,5 +6,6 @@ class ExchangeFormController {
   final amount = TextEditingController();
   final memo = TextEditingController();
 
-  Exchange get exchange => Exchange(person.text, amount.text, memo.text);
+  Exchange get exchange =>
+      Exchange(person.text, double.parse(amount.text), memo.text);
 }

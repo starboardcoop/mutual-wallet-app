@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mutual_wallet/models/user.dart';
 import 'package:mutual_wallet/screens/home_screen.dart';
 import 'package:mutual_wallet/theme_factory.dart';
 import 'package:mutual_wallet/widgets/main_app_bar.dart';
@@ -13,13 +12,11 @@ class MutualCreditApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var user = User("Dillon");
-
     return MaterialApp(
       title: 'Mutual Wallet',
       theme: ThemeFactory.get(),
       home: Scaffold(
-        appBar: MainAppBar(user),
+        appBar: MainAppBar(),
         body: const HomeScreen(),
       ),
     );

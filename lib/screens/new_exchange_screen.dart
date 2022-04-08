@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mutual_wallet/controllers/exchange.dart';
 import 'package:mutual_wallet/controllers/exchange_controller.dart';
 import 'package:mutual_wallet/controllers/exchange_form_controller.dart';
 import 'package:mutual_wallet/widgets/exchange_form.dart';
@@ -37,7 +38,7 @@ class _NewExchangeScreenState extends State<NewExchangeScreen> {
         children: [
           FloatingActionButton.extended(
             heroTag: null,
-            onPressed: () => submit(controller),
+            onPressed: () => submit(controller, _formController.send_exchange),
             label: const Text("SEND"),
             icon: const Icon(Icons.north_east),
             backgroundColor: Colors.white,
@@ -46,7 +47,8 @@ class _NewExchangeScreenState extends State<NewExchangeScreen> {
           const SizedBox(height: 10),
           FloatingActionButton.extended(
             heroTag: null,
-            onPressed: () => submit(controller),
+            onPressed: () =>
+                submit(controller, _formController.request_exchange),
             label: const Text("REQUEST"),
             icon: const Icon(Icons.south_west),
             backgroundColor: Colors.orange,
@@ -57,8 +59,8 @@ class _NewExchangeScreenState extends State<NewExchangeScreen> {
     );
   }
 
-  void submit(ExchangeController controller) {
-    controller.process(_formController.send_exchange);
+  void submit(ExchangeController controller, Exchange exchange) {
+    controller.process(exchange);
     Navigator.pop(context);
   }
 }

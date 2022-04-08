@@ -31,12 +31,13 @@ class _WalletAppBarState extends State<WalletAppBar> {
             ),
             const Spacer(flex: 10),
             Text(
-              HoursFormatter.format(user.balance),
+              HoursFormatter.formatDecimal(user.balance),
               style: const TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.w500,
               ),
             ),
+            const Text(" HR"),
           ],
         ),
       );

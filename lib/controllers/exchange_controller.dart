@@ -18,15 +18,12 @@ class ExchangeController {
   ExchangeModel get exchangeModel =>
       Provider.of<ExchangeModel>(_context, listen: false);
 
-  void send(BuildContext context, Exchange exchange) {
+  void process(Exchange exchange) {
     log(exchange);
-    user.debit(exchange.amount);
-    exchangeModel.add(exchange);
-  }
+    exchange.type == ExchangeType.send
+        ? user.debit(exchange.amount)
+        : user.credit(exchange.amount);
 
-  void request(BuildContext context, Exchange exchange) {
-    log(exchange);
-    user.credit(exchange.amount);
     exchangeModel.add(exchange);
   }
 
